@@ -1,17 +1,14 @@
 import React, {useState} from 'react'
 
 
-
 export default function TextForm(props) {
   
     const handeleUpCbtnclick =()=>{
-        // console.log("btn clicked " + text );
         let newText = text.toUpperCase();
         settext(newText)
         props.showAlert('Converted to Upper Case', 'success')
     }
     const handeleLowCbtnclick =()=>{
-        // console.log("btn clicked " + text );
         let newText = text.toLowerCase();
         settext(newText)
         props.showAlert('Converted to Lower Case', 'success')
@@ -19,7 +16,6 @@ export default function TextForm(props) {
     }
 
     const btnOnChange =(event)=>{
-        // console.log("On Change ");
         settext(event.target.value)
     }
 
@@ -30,14 +26,9 @@ export default function TextForm(props) {
 
     }
 
-
     
     const handeleCopy =()=>{
-      // let text = document.getElementById('mytextarea')
-      // text.select();
-      // navigator.clipboard.writeText(text.value)
       navigator.clipboard.writeText(text)
-      // document.getSelection().removeAllRanges();
       props.showAlert('Copied to Clipboard ', 'success')
 
     }
@@ -68,12 +59,12 @@ export default function TextForm(props) {
           <div className="mb-3">
               <textarea className="form-control" value= {text} onChange={btnOnChange} id="mytextarea" rows="9" style = {{ backgroundColor: props.mode==='dark'?'#3c3c43':'white', color: props.mode==='dark'?'white':'black' }} ></textarea>
           </div>
-          <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleUpCbtnclick} >Convert to UpperCase</button>
-          <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleLowCbtnclick} >Convert to LowerCase</button>
+          <button disabled={!/[a-z]/.test(text)} className="btn btn-primary mx-1 my-2" onClick={handeleUpCbtnclick} >Convert to UpperCase</button>
+          <button disabled={!/[A-Z]/.test(text)} className="btn btn-primary mx-1 my-2" onClick={handeleLowCbtnclick} >Convert to LowerCase</button>
           <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleClearText} >Clear Text</button>
           <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleCopy} >Copy Text</button>
-          <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleRemoveExtraSpaces} >Remove Extra Space</button>
-          <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handeleRemoveExtraLines} >Remove Extra Lines</button>
+          <button disabled={!text.match(/\s{2,}/)} className="btn btn-primary mx-1 my-2" onClick={handeleRemoveExtraSpaces} >Remove Extra Space</button>
+          <button disabled={!text.match(/\n\s*\n/)} className="btn btn-primary mx-1 my-2" onClick={handeleRemoveExtraLines} >Remove Extra Lines</button>
       </div>
       <div className={`container my-3 text-${props.mode==='dark'?'light':'dark'}`}>
         <h2>Text summary</h2>

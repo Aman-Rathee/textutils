@@ -47,7 +47,6 @@ function App() {
             <Route exact index element={<TextForm showAlert={showAlert} heading="Try TextUtils - Word counter, Character counter, Remove extra spaces" mode={mode} alert={alert} />} />
             <Route exact path="about" element={<About mode={mode} />} />
           </Routes>
-
         </div>
       </BrowserRouter>
     </>

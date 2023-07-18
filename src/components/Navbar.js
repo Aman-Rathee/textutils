@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Outlet, Link } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 
@@ -27,16 +26,9 @@ export default function Navbar(props) {
               <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault" />
               <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Dark mode</label>
             </div>
-            {/* <form className="d-flex">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-secondary" type="submit">Search</button>
-      </form> */}
           </div>
         </div>
       </nav>
-
-      {/* <Outlet /> */}
-
     </>
   )
 }
